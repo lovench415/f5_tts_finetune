@@ -141,7 +141,8 @@ def read_audio_text_pairs(csv_file: os.PathLike) -> List[Tuple[str, str]]:
         next(rdr, None)  # пропускаем заголовок
         for row in rdr:
             if len(row) >= 2:
-                pairs.append((str(root / row[0].strip()), row[1].strip()))
+                fil_nm = row[0].strip()+".mp3"
+                pairs.append((str(root / "wavs" / fil_nm), row[1].strip()))
     return pairs
 
 
@@ -320,7 +321,7 @@ def run_finetune(
         learning_rate=lr,
         num_warmup_updates=2000,
         save_per_updates=2000,
-        keep_last_n_checkpoints=-1,
+        keep_last_n_checkpoints=6,
         checkpoint_path=str(output_dir),
         batch_size_per_gpu=batch_size_frames,
         batch_size_type="frame",
