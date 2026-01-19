@@ -319,7 +319,7 @@ def run_finetune(
         model=model,
         epochs=epochs,
         learning_rate=lr,
-        num_warmup_updates=2000,
+        num_warmup_updates=24000,
         save_per_updates=2000,
         keep_last_n_checkpoints=6,
         checkpoint_path=str(output_dir),
