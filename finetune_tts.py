@@ -332,7 +332,6 @@ def run_finetune(
         wandb_project=prepared_dir.name if accelerator.is_main_process else None,
         wandb_run_name="finetune",
         last_per_updates=10000,
-        mixed_precision="bf16",
     )
 
     trainer.model = accelerator.prepare(trainer.model)
